@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
-  root to: 'pages#home'
+  root to: 'stockitems#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :stockitems do
+    resource :bids, only: [:new, :create, :index]
+    resource :orders, only: [:new, :create, :show]
+  end
+  resources :orders, only: [:index, :show]
 end
