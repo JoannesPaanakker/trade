@@ -1,0 +1,13 @@
+<h1>Stock items</h1>
+<h4>For trade</h4>
+</div>
+All stockitmes for sale:
+<% @stockitems.each do |s| %>
+    <div class="challenge">
+      <%= s.stock_type %>
+      <%= s.description %>
+      <%= s.sold_status %>
+      <%= s.sell_price %>
+   </div>
+  <button class="knop-1"><%= link_to "show bids", stockitem_path(s) %></button>
+<% end %>

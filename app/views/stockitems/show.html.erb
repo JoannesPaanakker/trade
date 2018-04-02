@@ -1,0 +1,25 @@
+<h1>Trade!</h1>
+<div container>
+    <div row>
+        <div class="col-xs-6 col-sm-6">
+            Item:
+            <div class="challenge">
+              <%= @stockitem.stock_type %>
+              <%= @stockitem.description %>
+              <%= @stockitem.sell_price %>
+            </div>
+        </div>
+        <div class="col-xs-6 col-sm-6">
+          Highest bid:
+          <div>
+            <% @bids.each do |b| %>
+              <div class="challenge">
+                <%= b.bid_price %>
+                <%= b.userbuy_id %>
+              </div>
+            <% end %>
+          </div>
+          <button class="knop-1"><%= link_to "New Bid", new_stockitem_bids_path(@stockitem) %></button>
+        </div>
+    </div>
+</div>
