@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180402165920) do
+ActiveRecord::Schema.define(version: 20180403074705) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,8 +19,8 @@ ActiveRecord::Schema.define(version: 20180402165920) do
     t.integer "bid_price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "userbuy_id"
     t.bigint "stockitem_id"
+    t.bigint "userbuy_id"
     t.index ["stockitem_id"], name: "index_bids_on_stockitem_id"
     t.index ["userbuy_id"], name: "index_bids_on_userbuy_id"
   end
@@ -31,17 +31,15 @@ ActiveRecord::Schema.define(version: 20180402165920) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "stockitem_id"
-    t.bigint "userbuy_id"
-    t.bigint "usersell_id"
+    t.bigint "bid_id"
+    t.index ["bid_id"], name: "index_orders_on_bid_id"
     t.index ["stockitem_id"], name: "index_orders_on_stockitem_id"
-    t.index ["userbuy_id"], name: "index_orders_on_userbuy_id"
-    t.index ["usersell_id"], name: "index_orders_on_usersell_id"
   end
 
   create_table "stockitems", force: :cascade do |t|
     t.string "stock_type"
     t.string "description"
-    t.boolean "sold_status"
+    t.boolean "sold_status", default: false
     t.string "original_code"
     t.integer "sell_price"
     t.datetime "created_at", null: false
@@ -50,15 +48,7 @@ ActiveRecord::Schema.define(version: 20180402165920) do
     t.index ["usersell_id"], name: "index_stockitems_on_usersell_id"
   end
 
-  create_table "userbuys", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.string "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "usersells", force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
     t.string "email"
@@ -67,9 +57,8 @@ ActiveRecord::Schema.define(version: 20180402165920) do
   end
 
   add_foreign_key "bids", "stockitems"
-  add_foreign_key "bids", "userbuys"
+  add_foreign_key "bids", "users", column: "userbuy_id"
+  add_foreign_key "orders", "bids"
   add_foreign_key "orders", "stockitems"
-  add_foreign_key "orders", "userbuys"
-  add_foreign_key "orders", "usersells"
-  add_foreign_key "stockitems", "usersells"
+  add_foreign_key "stockitems", "users", column: "usersell_id"
 end
