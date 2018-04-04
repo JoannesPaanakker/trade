@@ -12,5 +12,18 @@ class StockitemsController < ApplicationController
 
   def new
     @stockitem = Stockitem.new
+    @users = User.all
   end
+
+  def create
+    @stockitem = Stockitem.new(stockitem_params)
+    @stockitem.save!
+    redirect_to stockitems_path
+  end
+
+  private
+  def stockitem_params
+    params.require(:stockitem).permit(:sell_price, :description, :original_code, :usersell_id, :stock_type)
+  end
+
 end

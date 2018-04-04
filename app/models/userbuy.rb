@@ -1,2 +1,0 @@
-class Userbuy < ApplicationRecord
-end
