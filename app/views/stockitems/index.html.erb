@@ -3,15 +3,15 @@
 </div>
 All stockitmes for sale:
 <% @stockitems.each do |s| %>
-    <div class="challenge">
-      <%= s.stock_type %>
-      <%= s.description %>
-      <%= s.sold_status %>
-      <%= s.sell_price %>
-      <%= s.internal_size %>
-      <%= s.original_code %>
-    </div>
-  <button class="knop-1"><%= link_to "show bids", stockitem_path(s) %></button>
+  <div class="challenge">
+    <%= s.catalogitem.description %>
+    <%= s.catalogitem.brand %>
+    <%= s.catalogitem.product_code %>
+    € <%= s.sell_price %>
+    <%= @region %>
+    <%= @shoesizes[s.internal_size] %>
+    <button class="knop-1"><%= link_to "details", stockitem_path(s) %></button>
+  </div>
 <% end %>
 
 <br />

@@ -5,9 +5,11 @@ class StockitemsController < ApplicationController
 
     @orders = Order.where(stockitem_id: @stockitem.id)
   end
-  
+
   def index
     @stockitems = Stockitem.where(sold_status: false)
+    @region = Region.find(32)[:name]
+    @shoesizes = Shoesize.where(region_id: 32)[0][:sizes].split ","
   end
 
   def new
