@@ -8,8 +8,8 @@ class StockitemsController < ApplicationController
 
   def index
     @stockitems = Stockitem.where(sold_status: false)
-    @region = Region.find(32)[:name]
-    @shoesizes = Shoesize.where(region_id: 32)[0][:sizes].split ","
+    @region = Region.find(2)[:name]
+    @shoesizes = Shoesize.where(region_id: 2)[0][:sizes].split ","
   end
 
   def new
