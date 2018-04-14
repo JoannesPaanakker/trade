@@ -54,24 +54,28 @@ users = User.create([
     email: 'test@test.com',
     first_name: 'John',
     last_name: 'Doe',
+    password: '123456',
     region: regions[1],
   },
   {
     email: 'test2@test.com',
     first_name: 'Henk',
     last_name: 'Habraken',
+    password: '123456',
     region: regions[2],
   },
   {
     email: 'test3@test.com',
     first_name: 'Piet',
     last_name: 'Jansen',
+    password: '123456',
     region: regions[3]
   },
   {
     email: 'test4@test.com',
     first_name: 'Jan',
     last_name: 'Pietersen',
+    password: '123456',
     region: regions[1],
   }
 ])

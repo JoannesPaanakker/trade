@@ -1,14 +1,10 @@
-<div class="wrapper">
   <h1>Stock items</h1>
-  <h4>For trade</h4>
-  All stockitmes for sale:
   <table>
     <tr>
       <th>Description</th>
       <th>Brand</th>
       <th>Product Code</th>
       <th>Sell price</th>
-      <th>Region</th>
       <th>Size</th>
       <th></th>
     </tr>
@@ -18,12 +14,11 @@
         <td><%= s.catalogitem.brand %></td>
         <td><%= s.catalogitem.product_code %></td>
         <td>€ <%= s.sell_price %></td>
-        <td><%= @region %></td>
-        <td><%= @shoesizes[s.internal_size] %></td>
+        <td><%= @shoesizes[s.internal_size] %> (<%= @region %>)</td>
         <td><button class="knop-1"><%= link_to "details", stockitem_path(s) %></button></td>
       </tr>
     <% end %>
   </table>
   <br />
   <button class="knop-1"><%= link_to "new stockitem", new_stockitem_path %></button>
-</div>
+
