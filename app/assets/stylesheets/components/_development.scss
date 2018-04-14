@@ -1,0 +1,47 @@
+.knop-1 {
+    color: white !important;
+    padding: 10px 20px;
+    background: #469AE0;
+    transition: background 0.5s ease;
+    border-radius: 50px;
+    border: none;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    a {
+        text-decoration: none;
+        color: white;
+    }
+  }
+
+.wrapper {
+ height: 100vh;
+ background-color: whitesmoke;
+ padding: 30px;
+ color: navy;
+}
+
+.development {
+  color: red;
+  font-style: bold;
+  font-family: courier;
+  font-size: 20px;
+  text-align: right;
+}
+
+tr {
+  border: solid;
+  border-color: #9999;
+}
+
+th {
+  padding: 10px;
+}
+
+td {
+  padding: 10px;
+}
+
+
+ul {
+  list-style-type: none;
+}

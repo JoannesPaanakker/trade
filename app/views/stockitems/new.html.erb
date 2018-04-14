@@ -1,12 +1,11 @@
-<ul>
-  <% @users.each do |u| %>
-    <li>user: <%= u.last_name %> id: <%= u.id %></li>
-  <% end %>
-</ul>
+<div class="development">
+  developer info: <br />
+  current_user: <%= @user.email  %>
+</div>
+
 <%= form_for @stockitem, url: {action: "create"} do |b| %>
-    New bid: <br />
-    sell price:<%= b.text_field :sell_price, place_holder: "original code" %>
-    user id:<%= b.text_field :usersell_id, place_holder: "user id" %>
+    Selling: <br />
+    sell price:<%= b.text_field :sell_price %>
     <div class="form-actions">
         <%= b.submit "Next", class: 'knop-1' %>
     </div>

@@ -1,19 +1,36 @@
 <h1>Trade!</h1>
 <div container>
     <div row>
-        <div class="col-xs-6 col-sm-6">
-            Item:
-            <div class="challenge">
-              <%= @stockitem.sell_price %>
-            </div>
+        <div class="col-xs-3 col-sm-3">
+            <ul>
+              <li>Seller:</li>
+              <li>Selling price:</li>
+              <li>Brand:</li>
+              <li>Description:</li>
+              <li>Release Date:</li>
+              <li>Product Code:</li>
+              <li>Colour:</li>
+              <li>Size:</li>
+            </ul>
         </div>
-        <div class="col-xs-6 col-sm-6">
+        <div class="col-xs-6 col-sm-6 tt">
+            <ul>
+              <li><%= @stockitem.user.first_name %> <%= @stockitem.user.last_name%></li>
+              <li>€ <%= @stockitem.sell_price %></li>
+              <li><%= @stockitem.catalogitem.brand %></li>
+              <li><%= @stockitem.catalogitem.description %></li>
+              <li><%= @stockitem.catalogitem.release_date %></li>
+              <li><%= @stockitem.catalogitem.product_code %></li>
+              <li><%= @stockitem.catalogitem.colour %></li>
+              <li><%= @shoesizes[@stockitem.internal_size] %> (<%= @region %>)</li>
+            </ul>
+        </div>
+        <div class="col-xs-3 col-sm-3">
           Highest bid:
           <div>
             <% @bids.each do |b| %>
               <div class="challenge">
-                <%= b.bid_price %>
-                <%= b.userbuy_id %>
+                € <%= b.bid_price %>
               </div>
             <% end %>
           </div>
