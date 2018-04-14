@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   before_action :authenticate_user!
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
   def configure_permitted_parameters
       devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :region_id, :address1, :address2, :postalcode, :city, :country, :phonenumber])

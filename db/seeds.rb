@@ -10,8 +10,8 @@ p "seeds started"
 
 Order.destroy_all
 Bid.destroy_all
-Catalogitem.destroy_all
 Stockitem.destroy_all
+Catalogitem.destroy_all
 User.destroy_all
 Shoesize.destroy_all
 Region.destroy_all
