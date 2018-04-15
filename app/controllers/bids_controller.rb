@@ -14,6 +14,13 @@ class BidsController < ApplicationController
     redirect_to stockitem_path(params[:stockitem_id])
   end
 
+  def destroy
+    @bid = Bid.find(params[:id])
+    @id = @bid.stockitem_id
+    @bid.destroy
+    redirect_to stockitem_path(@id)
+  end
+
   private
   def bid_params
     params.require(:bid).permit(:bid_price, :stockitem_id, :userbuy_id)

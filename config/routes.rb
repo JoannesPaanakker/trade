@@ -7,4 +7,6 @@ Rails.application.routes.draw do
     resource :orders, only: [:new, :create, :show]
   end
   resources :orders, only: [:index, :show]
+  resources :bids, only: :destroy
+
 end

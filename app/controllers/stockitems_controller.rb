@@ -14,18 +14,29 @@ class StockitemsController < ApplicationController
 
   def new
     @stockitem = Stockitem.new
-    @user = User.find(current_user.id)
+    @catalogitems = Catalogitem.all
+    shoesize
   end
 
   def create
     @stockitem = Stockitem.new(stockitem_params)
+    @stockitem.catalogitem_id = params[:catalogitem_id]
+    @stockitem.user = current_user
+    @stockitem.internal_size = params[:internal_size]
     @stockitem.save!
     redirect_to stockitems_path
   end
 
+  def destroy
+    @stockitem = Stockitem.find(params[:id])
+    @stockitem.destroy
+    redirect_to stockitems_path
+  end
+
   private
+
   def stockitem_params
-    params.require(:stockitem).permit(:sell_price, :description, :original_code, :usersell_id, :stock_type)
+    params.require(:stockitem).permit(:sell_price, :usersell_id, :dead_stock, :internal_size, :catalog_itme_id)
   end
 
 end

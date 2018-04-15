@@ -7,6 +7,7 @@
       <th>Sell price</th>
       <th>Size</th>
       <th></th>
+      <th></th>
     </tr>
     <% @stockitems.each do |s| %>
       <tr>
@@ -16,6 +17,15 @@
         <td>€ <%= s.sell_price %></td>
         <td><%= @shoesizes[s.internal_size] %> (<%= @region %>)</td>
         <td><button class="knop-1"><%= link_to "details", stockitem_path(s) %></button></td>
+        <<td>
+          <% if user_signed_in? %>
+            <% if s.usersell_id == @current_user.id %>
+              <button class="btn-small">
+                  <%= link_to 'delete',  stockitem_path(s),  method: :delete, data: { confirm: 'Are you sure?' } %>
+              </button>
+            <% end %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </table>
