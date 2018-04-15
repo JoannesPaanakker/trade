@@ -15,10 +15,11 @@ class ApplicationController < ActionController::Base
   def shoesize
     if user_signed_in?
       @region = Region.find(@current_user.region_id)[:name]
-      @shoesizes = Shoesize.where(region_id: @current_user.region_id)[0][:sizes].split ","
+      @shoesizes = Shoesize.where(region_id: @current_user.region_id)[0][:sizes].split ", "
     else
-      @region = Region.find(2)[:name] # default region: EU
-      @shoesizes = Shoesize.where(region_id: 2)[0][:sizes].split ","
+      @region = Region.where(name: "EU")[0][:name] # default region: EU
+      @region_id = Region.where(name: "EU")[0][:id]
+      @shoesizes = Shoesize.where(region_id: @region_id)[0][:sizes].split ", "
     end
   end
 end

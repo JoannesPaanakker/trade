@@ -1,12 +1,34 @@
 <div class="development">
   developer info: <br />
-  current_user: <%= @user.email  %>
+  current_user: <%= current_user.email  %>
 </div>
 
 <%= form_for @stockitem, url: {action: "create"} do |b| %>
-    Selling: <br />
-    sell price:<%= b.text_field :sell_price %>
+    <label>Sales Price: <br />
+      <%= b.number_field :sell_price, required: true, autofocus: false, placeholder: 'Euro' %>
+    </label>
+    <label>Product:
+      <select id="selectCatalogitem">
+        <% @catalogitems.each do |c| %>
+          <option value="<%= c.id %>"><%= c.description %></option>
+        <% end %>
+      </select>
+      <div id="catalogitem_id">
+        <input onkeydown="return false", placeholder="select item" required>
+      </div>
+    </label>
+    <label>Shoesize (<%= @region %>) :
+      <select id="selectShoesize">
+        <% @shoesizes.each_with_index do |s, i| %>
+          <option value="<%= i %>"><%= s %></option>
+        <% end %>
+      </select>
+      <div id="internal_size">
+        <input onkeydown="return false", placeholder="select size" required>
+      </div>
+    </label>
+
     <div class="form-actions">
-        <%= b.submit "Next", class: 'knop-1' %>
+        <%= b.submit "Sell!", class: 'knop-1' %>
     </div>
 <% end %>

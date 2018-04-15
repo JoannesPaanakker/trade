@@ -194,13 +194,18 @@ bids = Bid.create([
     bid_price: 15,
     userbuy_id: users[0].id,
     stockitem: stockitems[1],
+  },
+  {
+    bid_price: 200,
+    userbuy_id: users[0].id,
+    stockitem: stockitems[2],
   }
 ])
 
 orders = Order.create([
   {
     order_price: 200,
-    bid: bids[0],
+    bid: bids[4],
     stockitem: stockitems[2],
     order_time: DateTime.new(2018, 3, 22)
   }
