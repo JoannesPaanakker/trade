@@ -5,5 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   has_many :stockitems
   has_many :bids
-  belongs_to :region
+  belongs_to :region, optional: true
+
+  validates :email, presence: true
 end

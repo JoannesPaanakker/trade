@@ -1,16 +1,16 @@
- <div class="development">
-  developer info: <br />
-  <% if current_user %>
-    current_user: <%= current_user.email  %>
-  <% else %>
-    no user logged in
-  <% end %>
+<h1>Order update</h1>
+
+<div>
+  <ul>
+    <li>Order date:</li>
+    <li><%=  @order.order_time %></li>
+  </ul>
 </div>
-<h1>Trade!</h1>
 <div container>
     <div row>
         <div class="col-xs-3 col-sm-3">
             <ul>
+              <li>Selling User:</li>
               <li>Selling price:</li>
               <li>Brand:</li>
               <li>Description:</li>
@@ -22,6 +22,7 @@
         </div>
         <div class="col-xs-6 col-sm-6 tt">
             <ul>
+              <li><%= @stockitem.user.first_name %> <%= @stockitem.user.last_name %></li>
               <li>€ <%= @stockitem.sell_price %></li>
               <li><%= @stockitem.catalogitem.brand %></li>
               <li><%= @stockitem.catalogitem.description %></li>
@@ -32,22 +33,22 @@
             </ul>
         </div>
         <div class="col-xs-3 col-sm-3">
-          Highest bid:
-          <div>
-            <% @bids.each do |b| %>
-              <div class="challenge">
-                € <%= b.bid_price %>
-                <% if user_signed_in? %>
-                  <% if b.userbuy_id == @current_user.id %>
-                    <button class="btn-small">
-                      <%= link_to 'delete',  bid_path(b),  method: :delete, data: { confirm: 'Are you sure?' } %>
-                    </button>
-                  <% end %>
-                <% end %>
-              </div>
-            <% end %>
-          </div>
-          <button class="knop-1"><%= link_to "New Bid", new_stockitem_bids_path(@stockitem) %></button>
+          <ul>
+            <li>Buying user:</li>
+            <li><%= @b.first_name %> <%= @buying_user.last_name %></li>
+            <li>Bid:</li>
+            <li>€ <%= @bid.bid_price  %></li>
+          </ul>
         </div>
     </div>
 </div>
+
+
+<%= form_for @order, url: {action: "update"} do |s| %>
+  <div>
+    <input name = "orderstatus_id">
+  </div>
+  <div class="form-actions">
+    <%= s.submit "Update order status", class: 'knop-1' %>
+  </div>
+<% end %>

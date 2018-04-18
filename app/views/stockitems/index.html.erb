@@ -1,3 +1,11 @@
+ <div class="development">
+  developer info: <br />
+  <% if current_user %>
+    current_user: <%= current_user.email  %>
+  <% else %>
+    no user logged in
+  <% end %>
+</div>
   <h1>Stock items</h1>
   <table>
     <tr>
