@@ -27,6 +27,17 @@ class StockitemsController < ApplicationController
     redirect_to stockitems_path
   end
 
+  def edit
+    @stockitem = Stockitem.find(params[:id])
+  end
+
+  def update
+    # @stockitem = Stockitem.find(params[:id])
+    # @stockitem.sold_status = true
+    # @stockitem.update!(stockitem_params2)
+    # redirect_to stockitems_path
+  end
+
   def destroy
     @stockitem = Stockitem.find(params[:id])
     @stockitem.destroy
@@ -36,7 +47,11 @@ class StockitemsController < ApplicationController
   private
 
   def stockitem_params
-    params.require(:stockitem).permit(:sell_price, :usersell_id, :dead_stock, :internal_size, :catalog_itme_id)
+    params.require(:stockitem).permit(:sell_price, :usersell_id, :dead_stock, :internal_size, :catalogitem_id)
+  end
+
+  def stockitem_params2
+    params.permit(:sell_price, :usersell_id, :dead_stock, :internal_size, :catalogitem_id)
   end
 
 end

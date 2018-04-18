@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180414133313) do
+ActiveRecord::Schema.define(version: 20180418103459) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,8 +45,17 @@ ActiveRecord::Schema.define(version: 20180414133313) do
     t.datetime "updated_at", null: false
     t.bigint "stockitem_id"
     t.bigint "bid_id"
+    t.bigint "orderstatus_id"
     t.index ["bid_id"], name: "index_orders_on_bid_id"
+    t.index ["orderstatus_id"], name: "index_orders_on_orderstatus_id"
     t.index ["stockitem_id"], name: "index_orders_on_stockitem_id"
+  end
+
+  create_table "orderstatuses", force: :cascade do |t|
+    t.integer "code"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "regions", force: :cascade do |t|
@@ -79,9 +88,10 @@ ActiveRecord::Schema.define(version: 20180414133313) do
   create_table "users", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
+    t.boolean "admin", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "region_id", default: 2
+    t.bigint "region_id"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -92,7 +102,6 @@ ActiveRecord::Schema.define(version: 20180414133313) do
     t.datetime "last_sign_in_at"
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
-    t.string "user"
     t.string "address1"
     t.string "address2"
     t.string "postalcode"
@@ -107,6 +116,7 @@ ActiveRecord::Schema.define(version: 20180414133313) do
   add_foreign_key "bids", "stockitems"
   add_foreign_key "bids", "users", column: "userbuy_id"
   add_foreign_key "orders", "bids"
+  add_foreign_key "orders", "orderstatuses"
   add_foreign_key "orders", "stockitems"
   add_foreign_key "shoesizes", "regions"
   add_foreign_key "stockitems", "catalogitems"

@@ -1,0 +1,14 @@
+<h1>Congratulations!!!!</h1>
+<p>
+  You are now the proud owner of <%= @stockitem.catalogitem.description %>
+</p>
+
+
+<%= form_for @stockitem, url: {action: "update"} do |s| %>
+  <div>
+    <input type="hidden", name = "sold_status", value = true >
+  </div>
+  <div class="form-actions">
+    <%= s.submit "Go back to stock-items", class: 'knop-1' %>
+  </div>
+<% end %>

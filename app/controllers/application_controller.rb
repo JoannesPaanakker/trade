@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   def configure_permitted_parameters
+      devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name])
       devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :region_id, :address1, :address2, :postalcode, :city, :country, :phonenumber])
   end
 
@@ -13,11 +14,11 @@ class ApplicationController < ActionController::Base
   end
 
   def shoesize
-    if user_signed_in?
+    if user_signed_in? && @current_user.region_id
       @region = Region.find(@current_user.region_id)[:name]
       @shoesizes = Shoesize.where(region_id: @current_user.region_id)[0][:sizes].split ", "
     else
-      @region = Region.where(name: "EU")[0][:name] # default region: EU
+      @region = "EU" # Region.where(name: "EU")[0][:name] # default region: EU
       @region_id = Region.where(name: "EU")[0][:id]
       @shoesizes = Shoesize.where(region_id: @region_id)[0][:sizes].split ", "
     end

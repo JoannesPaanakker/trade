@@ -1,4 +1,18 @@
 <h1>HomePage Trading</h1>
 
+ <div class="development">
+  developer info: <br />
+  <% if current_user %>
+    current_user: <%= current_user.email  %>
+    admin: <%= current_user.admin %>
+  <% else %>
+    no user logged in
+  <% end %>
+</div>
+
 
 <button class="knop-1"><%= link_to "Trade Items", stockitems_path %></button>
+
+<% if user_signed_in? && current_user.admin  %>
+  <button class="knop-1"><%= link_to "List Orders", orders_path %></button>
+<% end %>
