@@ -20,7 +20,7 @@ class StockitemsController < ApplicationController
 
   def create
     @stockitem = Stockitem.new(stockitem_params)
-    @stockitem.catalogitem_id = params[:catalogitem_id]
+    # @stockitem.catalogitem_id = params[:catalogitem_id]
     @stockitem.user = current_user
     @stockitem.internal_size = params[:internal_size]
     @stockitem.save!

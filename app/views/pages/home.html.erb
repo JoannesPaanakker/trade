@@ -14,5 +14,8 @@
 <button class="knop-1"><%= link_to "Trade Items", stockitems_path %></button>
 
 <% if user_signed_in? && current_user.admin  %>
-  <button class="knop-1"><%= link_to "List Orders", orders_path %></button>
+  <%= button_to "Orders", orders_path, method: "get", class: "knop-1"%>
+<% end %>
+<% if user_signed_in? && current_user.admin  %>
+  <%= button_to "Users", users_path, method: "get", class: "knop-1"%>
 <% end %>

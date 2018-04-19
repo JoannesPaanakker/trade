@@ -19,9 +19,6 @@ Orderstatus.destroy_all
 
 regions = Region.create([
   {
-    name: "-select-"
-  },
-  {
     name: "EU"
   },
   {
@@ -96,15 +93,15 @@ users = User.create([
 shoesizes = Shoesize.create([
   {
     region: regions[0],
-    sizes: '--, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25',
-  },
-  {
-    region: regions[1],
     sizes: '--, 35, 35.5, 36, 36.5, 37, 37.5, 38, 38.5, 39, 40, 41, 42, 43, 43.5, 44, 44.5, 45, 45.5, 46, 46.5, 47, 47.5, 48.5, 49, 50, 51',
   },
   {
-    region: regions[2],
+    region: regions[1],
     sizes: '--, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5, 7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12, 12.5, 13, 13.5, 14, 14.5, 15.5, 16.5',
+  },
+  {
+    region: regions[2],
+    sizes: '--, 2, 2.3, 3, 3.5, 4, 4.5, 5, 5.5, 6, 7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12, 12.5, 13, 13.5, 14, 15, 16',
   },
   {
     region: regions[3],
@@ -112,34 +109,27 @@ shoesizes = Shoesize.create([
   },
   {
     region: regions[4],
-    sizes: '--, 2, 2.3, 3, 3.5, 4, 4.5, 5, 5.5, 6, 7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12, 12.5, 13, 13.5, 14, 15, 16',
-  },
-  {
-    region: regions[5],
     sizes: '--, -, -, -, -, -, -, 4.5, 5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12, 12.5, 13, 13.5, 14.5, 15.5',
   },
   {
-    region: regions[6],
+    region: regions[5],
     sizes: '--, 20, 21, 22, 22.5, 23, 23.5, 24, 24.5, 25.5, 26, 26.5, 27, 27.5, 28, 28.5, 29, 29.5, 30, 30.5, 31, 31.5, 32, 32.5, 33, 34, 35',
   },
   {
-    region: regions[7],
+    region: regions[6],
     sizes: '--, 33, 34, 35, 36, 37, 38, 39, 39.5, 41, -, 42, 43, 43.5, 44, 44.5, 45, 46, -, 47, 47.5, 48, -, -, -, -, -',
   },
   {
-    region: regions[8],
+    region: regions[7],
     sizes: '--, 8.7", 8.8", 9", 9.1", 9.2", 9.3", 9.5", 9.6", 9.8", 10", 10.1", 10.2", 10.3", 10.5", 10.6", 10.7", 10.8", 11", 11.1", 11.2", 11.3", 11.5", 11.6", 11.7", 12", 12.2"',
   },
   {
-    region: regions[9],
+    region: regions[8],
     sizes: '--, 22.2, 22.5, 22.8, 23.1, 23.5, 23.8, 24.1, 24.4, 25, 25.4, 25.7, 26, 26.3, 26.6, 26.9, 27.3, 27.6, 28, 28.2, 28.5, 28.9, 29.2, 29.5, 29.8, 30.5, 31.1',
   }
 ])
 
 catalogitems = Catalogitem.create([
-  {
-    description: '--select--',
-  },
   {
     description: 'Beautiful sneaker',
     product_code: 'NIKE-9879w87987',
@@ -163,6 +153,14 @@ catalogitems = Catalogitem.create([
     release_date: DateTime.new(2018, 1, 5),
     colour: "white",
     brand: "Puma"
+  },
+  {
+    description: 'New sneaker',
+    product_code: 'New jhg098sdf',
+    retail_price: 150,
+    release_date: DateTime.new(2018, 2, 5),
+    colour: "black",
+    brand: "New"
   }
 ])
 
