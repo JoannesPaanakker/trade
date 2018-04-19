@@ -9,8 +9,13 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    @user = current_user
+    current_user
     stockitems_path
+  end
+
+  def after_update_path_for(resource)
+    @user = current_user
+    user_path
   end
 
   def shoesize

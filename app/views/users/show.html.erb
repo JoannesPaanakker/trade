@@ -1,0 +1,80 @@
+<% if current_user.admin || current_user.id == @user.id %>
+  <div class="development">
+    developer info: <br />
+    <% if current_user %>
+      current_user: <%= current_user.email  %>
+      admin: <%= current_user.admin %>
+    <% else %>
+      no user logged in
+    <% end %>
+  </div>
+  <h1>User details</h1>
+   <%= button_to "Edit User details", edit_user_registration_path(current_user), method: "get", class: "knop-1" %>
+  <table>
+    <tr>
+      <th>##</th>
+      <th>**</th>
+    </tr>
+    <tr>
+      <td>Name:</td>
+      <td><%= @user.first_name %> <%= @user.last_name  %></td>
+    </tr>
+    <tr>
+      <td>Email:</td>
+      <td><%= @user.email %></td>
+    </tr>
+    <tr>
+      <td>Role:</td>
+      <td>
+        <% if @user.admin %>
+          Administrator
+        <% else %>
+          Standard User
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td>Region</td>
+      <td><%= @region %></td>
+    </tr>
+    <tr>
+      <td>Last Signin:</td>
+      <td><%= @user.last_sign_in_at %></td>
+    </tr>
+    <tr>
+      <td>Address line 1:</td>
+      <td><%= @user.address1 %></td>
+    </tr>
+    <tr>
+      <td>Address line 2:</td>
+      <td><%= @user.address2 %></td>
+    </tr>
+    <tr>
+      <td>Postalcode:</td>
+      <td><%= @user.postalcode %></td>
+    </tr>
+    <tr>
+      <td>City:</td>
+      <td><%= @user.city %></td>
+    </tr>
+    <tr>
+      <td>Country:</td>
+      <td><%= @user.country %></td>
+    </tr>
+    <tr>
+      <td>Phonenumber:</td>
+      <td><%= @user.phonenumber %></td>
+    </tr>
+    <tr>
+      <td>Nr. of stockitems:</td>
+      <td><%= @nrstockitems  %></td>
+    </tr>
+    <tr>
+      <td>Nr. of bids:</td>
+      <td><%= @nrbids %></td>
+    </tr>
+  </table>
+<% else %>
+  <% flash[:alert] = "You're not auhtorised" %>
+  <%= button_to "Home", root_path, method: "get" %>
+<% end %>

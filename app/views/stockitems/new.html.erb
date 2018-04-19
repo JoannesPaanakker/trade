@@ -7,16 +7,7 @@
     <label>Sales Price: <br />
       <%= b.number_field :sell_price , min: 1, max: 100000, required: true, autofocus: false, placeholder: 'Euro' %>
     </label>
-    <label>Product:
-      <select id="selectCatalogitem">
-        <% @catalogitems.each do |c| %>
-          <option value="<%= c.id %>"><%= c.description %></option>
-        <% end %>
-      </select>
-      <div id="catalogitem_id">
-        <input onkeydown="return false", placeholder="select item" required>
-      </div>
-    </label>
+    <%= b.collection_select :catalogitem_id, Catalogitem.all, :id, :description, include_blank: false %>
     <label>Shoesize (<%= @region %>) :
       <select id="selectShoesize">
         <% @shoesizes.each_with_index do |s, i| %>
