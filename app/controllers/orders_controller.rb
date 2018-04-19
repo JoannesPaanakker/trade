@@ -13,7 +13,7 @@ class OrdersController < ApplicationController
     @order.order_price = @bid.bid_price
     @order.order_time = Time.new
     @orderstatus = Orderstatus.where(code: 101)
-    @order.orderstatus_id = @orderstatus
+    @order.orderstatus_id = @orderstatus[0].id
     @order.save!
     @stockitem = Stockitem.find(params[:stockitem_id])
     @stockitem.sold_status = true
@@ -49,7 +49,7 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.permit(:stockitem_id, :bid_id, :order_price, :order_time)
+    params.permit(:stockitem_id, :bid_id, :order_price, :order_time, :orderstatus_id)
   end
 
   def stockitem_params2

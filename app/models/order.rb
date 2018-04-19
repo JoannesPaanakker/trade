@@ -1,5 +1,5 @@
 class Order < ApplicationRecord
   belongs_to :stockitem
   belongs_to :bid
-  has_one :orderstatus
+  belongs_to :orderstatus
 end
