@@ -1,4 +1,4 @@
- <div class="development">
+<div class="development">
   developer info: <br />
   <% if current_user %>
     current_user: <%= current_user.email  %>
@@ -6,37 +6,37 @@
     no user logged in
   <% end %>
 </div>
-  <h1>Stock items</h1>
-  <table>
+<h1>Stock items</h1>
+<table>
+  <tr>
+    <th>Description</th>
+    <th>Brand</th>
+    <th>Product Code</th>
+    <th>Sell price</th>
+    <th>Size</th>
+    <th></th>
+    <th></th>
+  </tr>
+  <% @stockitems.each do |s| %>
     <tr>
-      <th>Description</th>
-      <th>Brand</th>
-      <th>Product Code</th>
-      <th>Sell price</th>
-      <th>Size</th>
-      <th></th>
-      <th></th>
-    </tr>
-    <% @stockitems.each do |s| %>
-      <tr>
-        <td><%= s.catalogitem.description %></td>
-        <td><%= s.catalogitem.brand %></td>
-        <td><%= s.catalogitem.product_code %></td>
-        <td>€ <%= s.sell_price %></td>
-        <td><%= @shoesizes[s.internal_size] %> (<%= @region %>)</td>
-        <td><button class="knop-1"><%= link_to "details", stockitem_path(s) %></button></td>
-        <<td>
-          <% if user_signed_in? %>
-            <% if s.usersell_id == @current_user.id %>
-              <button class="btn-small">
-                  <%= link_to 'delete',  stockitem_path(s),  method: :delete, data: { confirm: 'Are you sure?' } %>
-              </button>
-            <% end %>
+      <td><%= s.catalogitem.description %></td>
+      <td><%= s.catalogitem.brand %></td>
+      <td><%= s.catalogitem.product_code %></td>
+      <td>€ <%= s.sell_price %></td>
+      <td><%= @shoesizes[s.internal_size] %> (<%= @region %>)</td>
+      <td><button class="knop-1"><%= link_to "details", stockitem_path(s) %></button></td>
+      <<td>
+        <% if user_signed_in? %>
+          <% if s.usersell_id == @current_user.id %>
+            <button class="btn-small">
+                <%= link_to 'delete',  stockitem_path(s),  method: :delete, data: { confirm: 'Are you sure?' } %>
+            </button>
           <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </table>
-  <br />
-  <button class="knop-1"><%= link_to "new stockitem", new_stockitem_path %></button>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+<br />
+<button class="knop-1"><%= link_to "new stockitem", catalogitems_path %></button>
 

@@ -1,0 +1,20 @@
+<h2>Change details <%= @catalogitem.description %> </h2>
+
+<%= simple_form_for(@catalogitem, as: @catalogitem, url: catalogitem_path(@catalogitem.id), html: { method: :put }) do |c| %>
+  <%= c.error_notification %>
+
+  <div class="form-inputs">
+    <%= c.input :description, required: false, autofocus: true %>
+    <%= c.input :release_date, required: false%>
+    <%= c.input :colour, required: false %>
+    <%= c.input :photo, required: false %>
+    <%= c.input :brand, required: false %>
+    <%= c.input :product_code, required: false %>
+    <%= c.input :category, required: false %>
+    <%= c.input :retail_price, required: false %>
+  </div>
+  <div class="form-actions">
+    <%= c.button :submit, "Update" %>
+  </div>
+<% end %>
+<%= link_to "Back", :back %>
