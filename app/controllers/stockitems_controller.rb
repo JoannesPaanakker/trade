@@ -14,17 +14,22 @@ class StockitemsController < ApplicationController
 
   def new
     @stockitem = Stockitem.new
-    @catalogitems = Catalogitem.all
+    @catalogitem = Catalogitem.find(params[:format])
     shoesize
   end
 
   def create
     @stockitem = Stockitem.new(stockitem_params)
-    # @stockitem.catalogitem_id = params[:catalogitem_id]
+    @stockitem.catalogitem_id = params[:catalogitem_id]
     @stockitem.user = current_user
     @stockitem.internal_size = params[:internal_size]
-    @stockitem.save!
-    redirect_to stockitems_path
+    if @stockitem.internal_size == 0
+      flash[:alert] = "Please select a shoesize"
+      redirect_to new_stockitem_path(@stockitem.catalogitem_id)
+    else
+      @stockitem.save!
+      redirect_to stockitems_path
+    end
   end
 
   def edit

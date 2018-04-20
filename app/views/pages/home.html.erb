@@ -11,7 +11,8 @@
 </div>
 
 
-<button class="knop-1"><%= link_to "Trade Items", stockitems_path %></button>
+<%= button_to "Trade Items", stockitems_path, method: "get", class: "knop-1" %>
+<%= button_to "Catalogue Items", catalogitems_path, method: "get", class: "knop-1" %>
 
 <% if user_signed_in? && current_user.admin  %>
   <%= button_to "Orders", orders_path, method: "get", class: "knop-1"%>

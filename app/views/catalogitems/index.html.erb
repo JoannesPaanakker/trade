@@ -1,0 +1,46 @@
+ <div class="development">
+  developer info: <br />
+  <% if current_user %>
+    current_user: <%= current_user.email  %>
+  <% else %>
+    no user logged in
+  <% end %>
+</div>
+<h1>Catalogue</h1>
+<table>
+  <tr>
+    <th>Brand:</th>
+    <th>Description:</th>
+    <th>Colour:</th>
+    <th>Release date:</th>
+    <th>Product code:</th>
+    <th>Retail price:</th>
+    <th>Category:</th>
+    <th></th>
+    <th></th>
+  </tr>
+  <% @catalogitems.each do |c| %>
+    <tr>
+      <td><%= c.brand %></td>
+      <td><%= c.description %></td>
+      <td><%= c.colour %></td>
+      <td><%= c.release_date %></td>
+      <td><%= c.product_code %></td>
+      <td>€ <%= c.retail_price  %></td>
+      <td><%= c.category  %></td>
+      <td>
+        <%= button_to "I will sell these", new_stockitem_path(c), method: "get", class: "btn-small" %>
+      </td>
+      <td>
+        <% if user_signed_in? && current_user.admin %>
+          <%= button_to "Change Catalogitem details", edit_catalogitem_path(c), method: "get", class: "btn-small" %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+<br />
+<% if  user_signed_in? && current_user.admin %>
+  <%= button_to "New Catalogue Item", new_catalogitem_path, method: "get", class: "knop-1" %>
+<% end %>
+<%= button_to "home", root_path, method: "get", class: "knop-1" %>

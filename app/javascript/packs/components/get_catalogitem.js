@@ -1,5 +1,4 @@
 function getCatalogitem (event) {
-  // const catalogitem = document.getElementById("portal_id");
   const button = document.getElementById("selectCatalogitem");
   button.addEventListener("change", setCatalogitemId);
 }

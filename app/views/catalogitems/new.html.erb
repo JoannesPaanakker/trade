@@ -1,0 +1,21 @@
+<% if current_user.admin %>
+  <h1>New Catalogue Item</h1>
+  <%= form_for @catalogitem, url: {action: "create"} do |c| %>
+    <%= c.label 'Retail Price:' %>
+    <%= c.number_field :retail_price, min: 1, max: 100000, required: true, autofocus: false, placeholder: 'Euro' %>
+    Release Date:
+    <%= c.date_field :release_date, required: true, autofocus: false, placeholder: 'date' %>
+    <%= c.text_field :colour, required: true, autofocus: false, placeholder: 'colour' %>
+    <%= c.text_field :brand, required: true, autofocus: false, placeholder: 'Brand name' %>
+    <%= c.text_field :description, required: true, autofocus: false, placeholder: 'what is it exactly?' %>
+    <%= c.text_field :product_code, required: true, autofocus: false, placeholder: 'Brand specific product code (be exact please)' %>
+    <%= c.text_field :category, required: true, autofocus: false, placeholder: 'shoe' %>
+      <%#= b.collection_select :catalogitem_id, Catalogitem.all, :id, :description, include_blank: false %>
+    <div class="form-actions">
+      <%= c.submit "Register", class: 'knop-1' %>
+    </div>
+  <% end %>
+<% else %>
+  <% flash[:alert] = "You're not auhtorised" %>
+  <%= button_to "Home", root_path, method: "get" %>
+<% end %>
