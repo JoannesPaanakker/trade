@@ -9,6 +9,16 @@ class StockitemsController < ApplicationController
 
   def index
     @stockitems = Stockitem.where(sold_status: false)
+    @stockitems_highestbids = []
+    @stockitems.each do |s|
+      @highest_bid = Bid.where(stockitem_id: s.id).sort { |a,b| a.bid_price <=> b.bid_price }.reverse.first
+      if @highest_bid
+        @highest_bid_price = @highest_bid.bid_price
+      else
+        @highest_bid_price = 0
+      end
+      @stockitems_highestbids << @highest_bid_price
+    end
     shoesize
   end
 
