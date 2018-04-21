@@ -14,9 +14,11 @@
     <th>Product Code</th>
     <th>Sell price</th>
     <th>Size</th>
+    <th>Highest bid</th>
     <th></th>
     <th></th>
   </tr>
+  <% highest_bids_index = 0 %>
   <% @stockitems.each do |s| %>
     <tr>
       <td><%= s.catalogitem.description %></td>
@@ -24,7 +26,11 @@
       <td><%= s.catalogitem.product_code %></td>
       <td>€ <%= s.sell_price %></td>
       <td><%= @shoesizes[s.internal_size] %> (<%= @region %>)</td>
-      <td><button class="knop-1"><%= link_to "details", stockitem_path(s) %></button></td>
+      <td>
+        € <%= @stockitems_highestbids[highest_bids_index] %>
+        <% highest_bids_index += 1 %>
+      </td>
+      <td><button class="knop-1"><%= link_to "New Bid", stockitem_path(s) %></button></td>
       <<td>
         <% if user_signed_in? %>
           <% if s.usersell_id == @current_user.id %>
