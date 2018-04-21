@@ -8,7 +8,9 @@ All stockitmes for sale:
       <%= s.description %>
       <%= s.sold_status %>
       <%= s.sell_price %>
-   </div>
+      <%= s.internal_size %>
+      <%= s.original_code %>
+    </div>
   <button class="knop-1"><%= link_to "show bids", stockitem_path(s) %></button>
 <% end %>
 
