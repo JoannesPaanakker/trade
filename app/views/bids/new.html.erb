@@ -1,11 +1,18 @@
-<%= @stockitem.description %>
-<%= @stockitem.id %>
-
+<%= @stockitem.catalogitem.description %>
+<%= @shoesizes[@stockitem.internal_size] %> (<%= @region %>)
+<div>
+  Selling Price: € <%= @stockitem.sell_price %>
+</div>
+<div>
+  Highest bid: € <%= @highest_bid %>
+</div>
+<div>
+  New bid minimal: € <%= @min_bid %>
+</div>
 <%= form_for @bid, url: {action: "create"} do |b| %>
-    New bid: <br />
-    <%= b.text_field :stockitem_id, required: true %>
-    <%= b.text_field :bid_price, required: true, autofocus: true %>
-    <%= b.text_field :userbuy_id, required: true %>
+
+    New bid (€): <br />
+    <%= b.number_field :bid_price, min: @min_bid, max: @stockitem.sell_price, required: true, autofocus: true %>
     <div class="form-actions">
         <%= b.submit "Next", class: 'knop-1' %>
     </div>

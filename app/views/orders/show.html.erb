@@ -1,0 +1,53 @@
+<% if current_user.admin %>
+  <h1>Order</h1>
+  <div>
+    <ul>
+      <li>Order date:</li>
+      <li><%=  @order.created_at %></li>
+      <li>Order status:</li>
+      <li><%= @order.orderstatus.description %>(order code : <%= @order.orderstatus.code %>)</li>
+    </ul>
+  </div>
+  <div container>
+      <div row>
+          <div class="col-xs-3 col-sm-3">
+              <ul>
+                <li>Selling User:</li>
+                <li>Selling price:</li>
+                <li>Stockitem index</li>
+                <li>Brand:</li>
+                <li>Description:</li>
+                <li>Release Date:</li>
+                <li>Product Code:</li>
+                <li>Colour:</li>
+                <li>Size:</li>
+              </ul>
+          </div>
+          <div class="col-xs-6 col-sm-6 tt">
+              <ul>
+                <li><%= @selling_user.first_name %> <%= @selling_user.last_name %></li>
+                <li>€ <%= @stockitem.sell_price %></li>
+                <li><%= @stockitem.id %></li>
+                <li><%= @stockitem.catalogitem.brand %></li>
+                <li><%= @stockitem.catalogitem.description %></li>
+                <li><%= @stockitem.catalogitem.release_date %></li>
+                <li><%= @stockitem.catalogitem.product_code %></li>
+                <li><%= @stockitem.catalogitem.colour %></li>
+                <li><%= @shoesizes[@stockitem.internal_size] %> (<%= @region %>)</li>
+              </ul>
+          </div>
+          <div class="col-xs-3 col-sm-3">
+            <ul>
+              <li>Buying user:</li>
+              <li><%= @buying_user.first_name %> <%= @buying_user.last_name %></li>
+              <li>Bid:</li>
+              <li>€ <%= @bid.bid_price  %></li>
+            </ul>
+          </div>
+      </div>
+  </div>
+  <%= button_to "Orders", orders_path, method: "get", class: "knop-1"%>
+<% else %>
+  <% flash[:alert] = "You're not auhtorised" %>
+  <%= button_to "Home", root_path, method: "get" %>
+<% end %>

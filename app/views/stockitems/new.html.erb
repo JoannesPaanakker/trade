@@ -1,16 +1,27 @@
-<ul>
-  <% @users.each do |u| %>
-    <li>user: <%= u.last_name %> id: <%= u.id %></li>
-  <% end %>
-</ul>
+<div class="development">
+  developer info: <br />
+  current_user: <%= current_user.email  %>
+</div>
+
 <%= form_for @stockitem, url: {action: "create"} do |b| %>
-    New bid: <br />
-    type:<%= b.text_field :stock_type, required: true %>
-    desc:<%= b.text_field :description, required: true, place_holder: "description" %>
-    or. code:<%= b.text_field :original_code, place_holder: "original code" %>
-    sell price:<%= b.text_field :sell_price, place_holder: "original code" %>
-    user id:<%= b.text_field :usersell_id, place_holder: "user id" %>
+    <label>Sales Price: <br />
+      <%= b.number_field :sell_price , min: 1, max: 100000, required: true, autofocus: false, placeholder: 'Euro' %>
+    </label>
+    <%#= b.collection_select :catalogitem_id, Catalogitem.all, :id, :description, include_blank: false %>
+    <label><%= @catalogitem.brand %> <%= @catalogitem.description %>, <%= @catalogitem.colour %>
+      <input type="hidden", name = "catalogitem_id", value="<%= @catalogitem.id  %>">
+    </label>
+    <label>Shoesize (<%= @region %>) :
+      <select id="selectShoesize">
+        <% @shoesizes.each_with_index do |s, i| %>
+          <option value="<%= i %>"><%= s %></option>
+        <% end %>
+      </select>
+      <div id="internal_size">
+        <input onkeydown="return false", placeholder="select size" required>
+      </div>
+    </label>
     <div class="form-actions">
-        <%= b.submit "Next", class: 'knop-1' %>
+        <%= b.submit "Sell!", class: 'knop-1' %>
     </div>
 <% end %>

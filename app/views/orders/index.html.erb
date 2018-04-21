@@ -1,0 +1,38 @@
+<% if current_user.admin %>
+  <div class="development">
+    developer info: <br />
+    <% if current_user %>
+      current_user: <%= current_user.email  %>
+      admin: <%= current_user.admin %>
+    <% else %>
+      no user logged in
+    <% end %>
+  </div>
+  <h1>Orders</h1>
+  <table>
+    <tr>
+      <th>Ordertime</th>
+      <th>Price</th>
+      <th>Product</th>
+      <th>Seller</th>
+      <th>Buyer</th>
+      <th></th>
+      <th></th>
+    </tr>
+    <% @orders.each do |o| %>
+      <tr>
+        <td><%= o.order_time %></td>
+        <td>€ <%= o.order_price %></td>
+        <td><%= o.stockitem.catalogitem.description %></td>
+        <td><%= o.stockitem.user.last_name %></td>
+        <td><%= o.bid.user.last_name %></td>
+        <td><button class="knop-1"><%= link_to "details", order_path(o) %></button></td>
+      </tr>
+    <% end %>
+  </table>
+  <br />
+  <button class="knop-1"><%= link_to "home", root_path %></button>
+<% else %>
+  <% flash[:alert] = "You're not auhtorised" %>
+  <%= button_to "Home", root_path, method: "get" %>
+<% end %>

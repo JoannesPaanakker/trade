@@ -1,0 +1,25 @@
+
+<div>
+  Selling: € <%= @stockitem.sell_price %>
+</div>
+<div>
+  Buying: € <%= @bid.bid_price %>
+</div>
+<%= form_for @order, url: {action: "create"} do |o| %>
+  <label>Item: <%= @stockitem.catalogitem.description %>
+    <div>
+      <input type = "hidden", onkeydown="return false", name = "stockitem_id", value = <%= @stockitem.id %>  required>
+      <!-- <input onkeydown="return false", placeholder="confirm stockitem" required> -->
+    </div>
+  </label>
+  <label>Bid: € <%= @bid.bid_price %>
+    <div>
+      <input type = "hidden", onkeydown="return false", name = "bid_id", value = <%= @bid.id %>  required>
+    </div>
+  </label>
+  <div class="form-actions">
+    <%= o.submit "Confirm", class: 'knop-1' %>
+  </div>
+<% end %>
+
+<%= button_to "Cancel", bid_path(@bid), method: "delete", class: "knop-1" %>

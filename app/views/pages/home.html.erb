@@ -1,4 +1,22 @@
-<h1>HomePage Trading5</h1>
+<h1>HomePage Trading</h1>
+
+ <div class="development">
+  developer info: <br />
+  <% if current_user %>
+    current_user: <%= current_user.email  %>
+    admin: <%= current_user.admin %>
+  <% else %>
+    no user logged in
+  <% end %>
+</div>
 
 
-<button class="knop-1"><%= link_to "Trade Items", stockitems_path %></button>
+<%= button_to "Trade Items", stockitems_path, method: "get", class: "knop-1" %>
+<%= button_to "Catalogue Items", catalogitems_path, method: "get", class: "knop-1" %>
+
+<% if user_signed_in? && current_user.admin  %>
+  <%= button_to "Orders", orders_path, method: "get", class: "knop-1"%>
+<% end %>
+<% if user_signed_in? && current_user.admin  %>
+  <%= button_to "Users", users_path, method: "get", class: "knop-1"%>
+<% end %>

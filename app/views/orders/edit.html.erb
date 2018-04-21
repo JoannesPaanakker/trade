@@ -1,0 +1,54 @@
+<h1>Order update</h1>
+
+<div>
+  <ul>
+    <li>Order date:</li>
+    <li><%=  @order.order_time %></li>
+  </ul>
+</div>
+<div container>
+    <div row>
+        <div class="col-xs-3 col-sm-3">
+            <ul>
+              <li>Selling User:</li>
+              <li>Selling price:</li>
+              <li>Brand:</li>
+              <li>Description:</li>
+              <li>Release Date:</li>
+              <li>Product Code:</li>
+              <li>Colour:</li>
+              <li>Size:</li>
+            </ul>
+        </div>
+        <div class="col-xs-6 col-sm-6 tt">
+            <ul>
+              <li><%= @stockitem.user.first_name %> <%= @stockitem.user.last_name %></li>
+              <li>€ <%= @stockitem.sell_price %></li>
+              <li><%= @stockitem.catalogitem.brand %></li>
+              <li><%= @stockitem.catalogitem.description %></li>
+              <li><%= @stockitem.catalogitem.release_date %></li>
+              <li><%= @stockitem.catalogitem.product_code %></li>
+              <li><%= @stockitem.catalogitem.colour %></li>
+              <li><%= @shoesizes[@stockitem.internal_size] %> (<%= @region %>)</li>
+            </ul>
+        </div>
+        <div class="col-xs-3 col-sm-3">
+          <ul>
+            <li>Buying user:</li>
+            <li><%= @b.first_name %> <%= @buying_user.last_name %></li>
+            <li>Bid:</li>
+            <li>€ <%= @bid.bid_price  %></li>
+          </ul>
+        </div>
+    </div>
+</div>
+
+
+<%= form_for @order, url: {action: "update"} do |s| %>
+  <div>
+    <input name = "orderstatus_id">
+  </div>
+  <div class="form-actions">
+    <%= s.submit "Update order status", class: 'knop-1' %>
+  </div>
+<% end %>
