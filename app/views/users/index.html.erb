@@ -30,9 +30,9 @@
           <% end %>
         </td>
         <td><%= u.country %></td>
-        <td><%= @nrstockitems  %></td>
-        <td><%= @nrbids %></td>
-        <td><%= @nrorders %></td>
+        <td><%= Bid.where(userbuy_id: u).count %></td>
+        <td><%= Stockitem.where(usersell_id: u).count %></td>
+        <td>To Do</td>
         <td><%= button_to "Details", user_path(u), method: "get", class: "btn-small"%></td>
       </tr>
     <% end %>
