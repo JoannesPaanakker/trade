@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180412142918) do
+ActiveRecord::Schema.define(version: 20180418103459) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -81,10 +81,9 @@ ActiveRecord::Schema.define(version: 20180412142918) do
     t.datetime "updated_at", null: false
     t.bigint "usersell_id"
     t.integer "retail_price"
-    t.date "relase_date"
+    t.date "release_date"
     t.string "colour"
     t.string "photo"
-    t.integer "internal_size"
     t.bigint "catalogitem_id"
     t.index ["catalogitem_id"], name: "index_stockitems_on_catalogitem_id"
     t.index ["usersell_id"], name: "index_stockitems_on_usersell_id"
