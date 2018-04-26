@@ -10,6 +10,7 @@
     <% if user_signed_in? %>
 
       <!-- Links when logged in -->
+      <%= link_to "Home", "#", class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "Stock Items", stockitems_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "Messages", "#", class: "navbar-wagon-item navbar-wagon-link" %>
 
