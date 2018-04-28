@@ -73,6 +73,14 @@
       <td>Nr. of bids:</td>
       <td><%= @nrbids %></td>
     </tr>
+    <tr>
+      <td>Buy order(s):</td>
+      <td><%= @buy_orders.count %></td>
+    </tr>
+    <tr>
+      <td>Sell order(s):</td>
+      <td><%= @sell_orders.count %></td>
+    </tr>
   </table>
 <% else %>
   <% flash[:alert] = "You're not auhtorised" %>
