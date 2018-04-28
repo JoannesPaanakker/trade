@@ -16,7 +16,8 @@
       <th>Country</th>
       <th>Nr. of bids</th>
       <th>Nr. of stockitems</th>
-      <th>Nr. of orders</th>
+      <th>buy orders</th>
+      <th>sell orders</th>
       <th></th>
     </tr>
     <% @users.each do |u| %>
@@ -32,7 +33,26 @@
         <td><%= u.country %></td>
         <td><%= Bid.where(userbuy_id: u).count %></td>
         <td><%= Stockitem.where(usersell_id: u).count %></td>
-        <td>To Do</td>
+        <td>
+          <% @buy_orders = [] %>
+          <% Bid.where(userbuy_id: u).each do |b|%>
+            <% @buy_order = Order.where(bid_id: b) %>
+            <% if @buy_order.any? %>
+              <% @buy_orders << @buy_order %>
+            <% end %>
+          <% end %>
+          <%= @buy_orders.count %>
+        </td>
+        <td>
+          <% @sell_orders = [] %>
+          <% Stockitem.where(usersell_id: u).each do |b|%>
+            <% @sell_order = Order.where(stockitem_id: b) %>
+            <% if @sell_order.any? %>
+              <% @sell_orders << @sell_order %>
+            <% end %>
+          <% end %>
+          <%= @sell_orders.count %>
+        </td>
         <td><%= button_to "Details", user_path(u), method: "get", class: "btn-small"%></td>
       </tr>
     <% end %>

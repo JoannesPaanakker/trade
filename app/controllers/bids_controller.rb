@@ -1,16 +1,21 @@
 class BidsController < ApplicationController
 
   def new
-    @bid = Bid.new
     @stockitem = Stockitem.find(params[:stockitem_id])
-    if Bid.where(stockitem_id: @stockitem.id).first
-      @highest_bid = Bid.where(stockitem_id: @stockitem.id).sort { |a,b| a.bid_price <=> b.bid_price }.reverse.first.bid_price
-      @min_bid = @highest_bid + 5
+    if @stockitem.usersell_id == current_user.id
+      flash[:alert] = "You're not allowed to place a bid on your own item."
+      redirect_to stockitem_path(params[:stockitem_id])
     else
-      @highest_bid = "no bid yet"
-      @min_bid = 5
+      @bid = Bid.new
+      if Bid.where(stockitem_id: @stockitem.id).first
+        @highest_bid = Bid.where(stockitem_id: @stockitem.id).sort { |a,b| a.bid_price <=> b.bid_price }.reverse.first.bid_price
+        @min_bid = @highest_bid + 5
+      else
+        @highest_bid = "no bid yet"
+        @min_bid = 5
+      end
+      shoesize
     end
-    shoesize
   end
 
   def create
