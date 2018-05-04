@@ -1,6 +1,6 @@
 .carousel-inner {
   /*height: 450px;*/
-  max-height: 350px;
+  max-height: 250px;
   overflow-x: hidden;
   overflow-y: auto;
 }
@@ -10,5 +10,5 @@
 
 .carousel-inner img {
   margin: auto;
-  height: 350px !important;
+  height: 250px !important;
 }
