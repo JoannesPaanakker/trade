@@ -1,9 +1,14 @@
 .carousel-inner {
-  height: 450px;
+  /*height: 450px;*/
   max-height: 350px;
   overflow-x: hidden;
   overflow-y: auto;
 }
 .wrapper {
   padding: 0px;
+}
+
+.carousel-inner img {
+  margin: auto;
+  height: 350px !important;
 }

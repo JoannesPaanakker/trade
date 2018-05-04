@@ -8,6 +8,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 p "seeds started"
 
+Transaction.destroy_all
 Order.destroy_all
 Bid.destroy_all
 Stockitem.destroy_all
@@ -16,6 +17,7 @@ User.destroy_all
 Shoesize.destroy_all
 Region.destroy_all
 Orderstatus.destroy_all
+
 
 regions = Region.create([
   {
@@ -257,7 +259,8 @@ orders = Order.create([
     bid: bids[4],
     stockitem: stockitems[2],
     order_time: DateTime.new(2018, 3, 22),
-    orderstatus_id: orderstatuses[1].id
+    orderstatus_id: orderstatuses[1].id,
+    order_nr: 10000001,
   }
 ])
 

@@ -10,26 +10,23 @@
   <!-- Wrapper for slides -->
   <div class="carousel-inner">
     <div class="item active">
-      <%= image_tag "schoen1.jpeg" %>
+      <%= image_tag "img36.jpeg", height: "350", alt: "Shoe number 1" %>
       <div class="carousel-caption">
-        <h3>Los Angeles</h3>
-        <p>LA is always so much fun!</p>
+        <p>Air Vapormax Off White 2018</p>
       </div>
     </div>
 
     <div class="item">
-      <img src="chicago.jpg" alt="Chicago">
+      <%= image_tag "Air-Jordan-1-Retro-High-Satin-Shattered-Backboard-W.png", height: "350", alt: "Air Jordan 1 Retro High Satin Shattered Backboard" %>
       <div class="carousel-caption">
-        <h3>Chicago</h3>
-        <p>Thank you, Chicago!</p>
+        <p>Air Jordan 1 Retro High Satin Shattered Backboard</p>
       </div>
     </div>
 
     <div class="item">
-      <img src="ny.jpg" alt="New York">
+      <%= image_tag "air-jordan-11-retro-win-like-96-Product.jpg", height: "350", alt: "air-jordan-11-retro-win-like-96-Product" %>
       <div class="carousel-caption">
-        <h3>New York</h3>
-        <p>We love the Big Apple!</p>
+        <p>air jordan 11 retro win like 96</p>
       </div>
     </div>
   </div>
@@ -53,9 +50,10 @@
   no user logged in
   <%# end %>
 </div> -->
-<%= button_to "Trade Items", stockitems_path, method: "get", class: "knop-1" %>
-<%= button_to "Catalogue Items", catalogitems_path, method: "get", class: "knop-1" %>
-
+<div class="justify">
+  <%= button_to "Market", stockitems_path, method: "get", class: "knop-1" %>
+  <%= button_to "Catalogue Items", catalogitems_path, method: "get", class: "knop-1" %>
+</div>
 
 
 <% if user_signed_in? && current_user.admin  %>
@@ -65,14 +63,15 @@
 <%= button_to "Users", users_path, method: "get", class: "knop-1"%>
 <% end %>
 
-<div class="container-fluid">
-  <h1 class="text-center mb-3">Most Populair</h1>
+<!-- <div class="container-fluid">
+  <h1 class="text-center mb-3">Top sellers</h1>
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner row w-100 mx-auto">
       <div class="carousel-item col-md-4 active">
         <div class="card">
-          <img class="card-img-top img-fluid" src="http://placehold.it/800x600/f44242/fff" alt="Card image cap">
-          <div class="card-body">
+ -->          <!-- <img class="card-img-top img-fluid" src="../../assets/images/img36.jpeg" alt="Card image cap"> -->
+          <%#= image_tag "img36.jpeg", class: "card-img-top img-fluid" %>
+<!--           <div class="card-body">
             <h4 class="card-title">Card 1</h4>
             <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
             <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
@@ -149,4 +148,4 @@
       <span class="sr-only">Next</span>
     </a>
   </div>
-</div>
+</div> -->

@@ -75,3 +75,7 @@
     visibility: visible;
   }
 }
+
+.carousel-caption p {
+  color: black !important;
+}

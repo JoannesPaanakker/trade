@@ -1,0 +1,9 @@
+<h1>Payment confirmed</h1>
+<ul>
+  <li>Status: <%= @transaction.state %></li>
+  <li>OrderNr.: <%= @transaction.transaction_order_nr %></li>
+  <li>Description: <%= @description %></li>
+  <li>Amount: <%= humanized_money_with_symbol(@transaction.amount) %></li>
+<ul>
+
+<%= button_to "Stockitems", stockitems_path, method: "get", class: "knop-1" %>

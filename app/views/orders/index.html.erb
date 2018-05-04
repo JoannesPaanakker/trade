@@ -22,7 +22,10 @@
     <% @orders.each do |o| %>
       <tr>
         <td><%= o.order_time %></td>
-        <td>€ <%= o.order_price %></td>
+        <td>
+          <%# order_price_in_euro = o.order_price / 100 %>
+          <%= humanized_money_with_symbol(o.order_price) %>
+        </td>
         <td><%= o.stockitem.catalogitem.description %></td>
         <td><%= o.stockitem.user.last_name %></td>
         <td><%= o.bid.user.last_name %></td>
