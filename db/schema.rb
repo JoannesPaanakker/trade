@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180418103459) do
+ActiveRecord::Schema.define(version: 20180429222821) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,8 @@ ActiveRecord::Schema.define(version: 20180418103459) do
     t.bigint "stockitem_id"
     t.bigint "bid_id"
     t.bigint "orderstatus_id"
+    t.integer "order_price_cents", default: 0, null: false
+    t.integer "order_nr"
     t.index ["bid_id"], name: "index_orders_on_bid_id"
     t.index ["orderstatus_id"], name: "index_orders_on_orderstatus_id"
     t.index ["stockitem_id"], name: "index_orders_on_stockitem_id"
@@ -89,6 +91,19 @@ ActiveRecord::Schema.define(version: 20180418103459) do
     t.index ["usersell_id"], name: "index_stockitems_on_usersell_id"
   end
 
+  create_table "transactions", force: :cascade do |t|
+    t.string "state"
+    t.string "transaction_order_nr"
+    t.integer "amount_cents", default: 0, null: false
+    t.jsonb "payment"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "order_id"
+    t.index ["order_id"], name: "index_transactions_on_order_id"
+    t.index ["user_id"], name: "index_transactions_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -125,5 +140,7 @@ ActiveRecord::Schema.define(version: 20180418103459) do
   add_foreign_key "shoesizes", "regions"
   add_foreign_key "stockitems", "catalogitems"
   add_foreign_key "stockitems", "users", column: "usersell_id"
+  add_foreign_key "transactions", "orders"
+  add_foreign_key "transactions", "users"
   add_foreign_key "users", "regions"
 end

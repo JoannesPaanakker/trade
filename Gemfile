@@ -17,6 +17,8 @@ gem 'uglifier'
 gem 'webpacker'
 gem 'devise'
 gem 'country_select'
+gem 'money-rails'
+gem 'stripe'
 
 group :development do
   gem 'web-console', '>= 3.3.0'

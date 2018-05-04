@@ -1,8 +1,8 @@
 .knop-1 {
-    color: white;
+    color: black;
     font-size: 15px;
     padding: 10px 10px;
-    background: #469AE0;
+    background: gold;
     transition: background 0.5s ease;
     border-radius: 50px;
     border: none;
@@ -69,4 +69,10 @@ td {
 
 ul {
   list-style-type: none;
+}
+
+.justify {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
 }

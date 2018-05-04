@@ -16,4 +16,7 @@ Rails.application.routes.draw do
   resources :catalogitems, except: [:destroy]
   resources :orderstatuses, only: [:index]
   resources :users, only: [:show, :index]
+  resources :transactions, only: [:show] do
+    resources :payments, only: [:new, :create]
+  end
 end
