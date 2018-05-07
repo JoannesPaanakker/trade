@@ -133,36 +133,58 @@ shoesizes = Shoesize.create([
 
 catalogitems = Catalogitem.create([
   {
-    description: 'Beautiful sneaker',
-    product_code: 'NIKE-9879w87987',
-    retail_price: 100,
-    release_date: DateTime.new(2017, 9, 22),
-    colour: "red",
-    brand: "Nike"
-  },
-  {
-    description: 'More Beautiful sneaker',
-    product_code: 'ADIDAS-9asdf0ii87',
-    retail_price: 120,
-    release_date: DateTime.new(2017, 11, 6),
-    colour: "green",
-    brand: "Adidas"
-  },
-  {
-    description: 'Top sneaker',
-    product_code: 'Puma 098098hh977',
-    retail_price: 150,
-    release_date: DateTime.new(2018, 1, 5),
+    description: 'Air Vapormax Off White 2018',
+    product_code: 'NIKE-1002345',
+    retail_price: 250,
+    release_date: DateTime.new(2018, 4, 14),
     colour: "white",
-    brand: "Puma"
+    brand: "Nike",
+    photo: "img36.jpg",
   },
   {
-    description: 'New sneaker',
-    product_code: 'New jhg098sdf',
-    retail_price: 150,
-    release_date: DateTime.new(2018, 2, 5),
+    description: 'Air Jordan 1 Retro High Satin Shattered Backboard',
+    product_code: 'NIKE-1000001',
+    retail_price: 160,
+    release_date: DateTime.new(2018, 5, 5),
+    colour: "green",
+    brand: "Nike",
+    photo: "Air-Jordan-1-Retro-High-Satin-Shattered-Backboard-W.jpg",
+  },
+  {
+    description: 'air jordan 11 retro win like 96',
+    product_code: 'Nike-098098hh977',
+    retail_price: 220,
+    release_date: DateTime.new(2017, 12, 9),
+    colour: "red",
+    brand: "Nike",
+    photo: "air-jordan-11-retro-win-like-96-Product.jpg",
+  },
+  {
+    description: 'adidas Trimm Star VHS',
+    product_code: 'ADI-89yu76',
+    retail_price: 112,
+    release_date: DateTime.new(2018, 5, 4),
+    colour: "cream",
+    brand: "Adidas",
+    photo: "Adidas-Trimm-Star-VHS.jpg",
+  },
+  {
+    description: 'adidas AW BBall Alexander Wang All-Star',
+    product_code: 'ADI-8hy654t',
+    retail_price: 300,
+    release_date: DateTime.new(2018, 2, 16),
     colour: "black",
-    brand: "New"
+    brand: "Adidas",
+    photo: "adidas-AW-BBall-Alexander-Wang-Black-Grey.jpg",
+  },
+  {
+    description: 'Puma Parallel The Weeknd Marshmallow',
+    product_code: 'PUMA-089uy76hg',
+    retail_price: 220,
+    release_date: DateTime.new(2017, 8, 24),
+    colour: "marhsmellow",
+    brand: "Puma",
+    photo: "Puma-Parallel-The-Weeknd-Marshmallow.jpg",
   }
 ])
 

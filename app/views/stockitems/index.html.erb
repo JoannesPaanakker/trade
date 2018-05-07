@@ -1,47 +1,50 @@
-<div class="development">
+<!-- <div class="development">
   developer info: <br />
-  <% if current_user %>
-    current_user: <%= current_user.email  %>
-  <% else %>
+  <%# if current_user %>
+    current_user: <%#= current_user.email  %>
+  <%# else %>
     no user logged in
-  <% end %>
-</div>
-<h1>Stock items</h1>
-<table>
-  <tr>
-    <th>Description</th>
-    <th>Brand</th>
-    <th>Product Code</th>
-    <th>Sell price</th>
-    <th>Size</th>
-    <th>Highest bid</th>
-    <th></th>
-    <th></th>
-  </tr>
-  <% highest_bids_index = 0 %>
-  <% @stockitems.each do |s| %>
-    <tr>
-      <td><%= s.catalogitem.description %></td>
-      <td><%= s.catalogitem.brand %></td>
-      <td><%= s.catalogitem.product_code %></td>
-      <td>€ <%= s.sell_price %></td>
-      <td><%= @shoesizes[s.internal_size] %> (<%= @region %>)</td>
-      <td>
-        € <%= @stockitems_highestbids[highest_bids_index] %>
-        <% highest_bids_index += 1 %>
-      </td>
-      <td><button class="knop-1"><%= link_to "New Bid", stockitem_path(s) %></button></td>
-      <<td>
-        <% if user_signed_in? %>
-          <% if s.usersell_id == @current_user.id %>
-            <button class="btn-small">
-                <%= link_to 'delete',  stockitem_path(s),  method: :delete, data: { confirm: 'Are you sure?' } %>
-            </button>
+  <%# end %>
+</div> -->
+<h1>Market</h1>
+<div class="container-fluid">
+  <div class="row">
+    <% highest_bids_index = 0 %>
+    <% @stockitems.each do |s| %>
+      <div class="col-xs-12 col-sm-6 tst-stockitem">
+        <div class="catalog-title parent-header">
+          <div class="catalog-description-head">
+            <%= s.catalogitem.description %>, Size: <%= @shoesizes[s.internal_size] %> (<%= @region %>)
+          </div>
+          <% if user_signed_in? %>
+            <% if s.usersell_id == @current_user.id %>
+              <button class="btn-small">
+                <%= link_to 'Remove',  stockitem_path(s),  method: :delete, data: { confirm: 'Are you sure?' } %>
+              </button>
+            <% end %>
           <% end %>
-        <% end %>
-      </td>
-    </tr>
-  <% end %>
-</table>
+        </div>
+        <div>
+        <%= image_tag s.catalogitem.photo, class: "img-responsive"%>
+        </div>
+        <div class="catalog-title parent">
+          <div class="catalog-description">
+            Sell: € <%= s.sell_price %> Highest Bid: € <%= @stockitems_highestbids[highest_bids_index] %>
+            <% highest_bids_index += 1 %>
+          </div>
+          <%= button_to "New Bid", stockitem_path(s), method: "get", class: "btn-small" %>
+          <% if user_signed_in? %>
+            <% if s.usersell_id == @current_user.id %>
+              <button class="btn-small">
+                  <%= link_to 'delete',  stockitem_path(s),  method: :delete, data: { confirm: 'Are you sure?' } %>
+              </button>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
 <br />
 <button class="knop-1"><%= link_to "new stockitem", catalogitems_path %></button>

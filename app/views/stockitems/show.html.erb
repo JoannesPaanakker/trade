@@ -6,48 +6,79 @@
     no user logged in
   <% end %>
 </div>
-<h1>Trade!</h1>
-<div container>
-    <div row>
-        <div class="col-xs-3 col-sm-3">
-            <ul>
-              <li>Selling price:</li>
-              <li>Brand:</li>
-              <li>Description:</li>
-              <li>Release Date:</li>
-              <li>Product Code:</li>
-              <li>Colour:</li>
-              <li>Size:</li>
-            </ul>
-        </div>
-        <div class="col-xs-6 col-sm-6 tt">
-            <ul>
-              <li>€ <%= @stockitem.sell_price %></li>
-              <li><%= @stockitem.catalogitem.brand %></li>
-              <li><%= @stockitem.catalogitem.description %></li>
-              <li><%= @stockitem.catalogitem.release_date %></li>
-              <li><%= @stockitem.catalogitem.product_code %></li>
-              <li><%= @stockitem.catalogitem.colour %></li>
-              <li><%= @shoesizes[@stockitem.internal_size] %> (<%= @region %>)</li>
-            </ul>
-        </div>
-        <div class="col-xs-3 col-sm-3">
-          Highest bid:
+<div class="image">
+  <%= image_tag @stockitem.catalogitem.photo, class: "img-responsive"%>
+</div>
+<div class="container-fluid">
+      <div class="text-box1">
+        Try to buy <%= @stockitem.catalogitem.description %>, size <%= @shoesizes[@stockitem.internal_size] %> (<%= @region %>)
+      </div>
+  <div class="row stockitem-data">
+    <div class="col-xs-4 col-sm-3">
+      <ul>
+        <li>Selling price:</li>
+        <li>Brand:</li>
+        <li>Description:</li>
+        <li>Release Date:</li>
+        <li>Product Code:</li>
+        <li>Colour:</li>
+        <li>Size:</li>
+      </ul>
+    </div>
+    <div class="col-xs-8 col-sm-6">
+        <ul>
+          <li>€ <%= @stockitem.sell_price %></li>
+          <li><%= @stockitem.catalogitem.brand %></li>
+          <li><%= @stockitem.catalogitem.description %></li>
+          <li><%= @stockitem.catalogitem.release_date %></li>
+          <li><%= @stockitem.catalogitem.product_code %></li>
+          <li><%= @stockitem.catalogitem.colour %></li>
+          <li><%= @shoesizes[@stockitem.internal_size] %> (<%= @region %>)</li>
+        </ul>
+    </div>
+    <div class="col-sm-3 hidden-xs">
+      <div class="text-box1">
+        Bid History:
+      </div>
+      <div>
+        <% @bids.each do |b| %>
           <div>
-            <% @bids.each do |b| %>
-              <div class="challenge">
-                € <%= b.bid_price %>
-                <% if user_signed_in? %>
-                  <% if b.userbuy_id == @current_user.id %>
-                    <button class="btn-small">
-                      <%= link_to 'delete',  bid_path(b),  method: :delete, data: { confirm: 'Are you sure?' } %>
-                    </button>
-                  <% end %>
-                <% end %>
-              </div>
+            € <%= b.bid_price %>
+            <% if user_signed_in? %>
+              <% if b.userbuy_id == @current_user.id %>
+                <button class="btn-small">
+                  <%= link_to 'delete',  bid_path(b),  method: :delete, data: { confirm: 'Are you sure?' } %>
+                </button>
+              <% end %>
             <% end %>
           </div>
-          <button class="knop-1"><%= link_to "New Bid", new_stockitem_bids_path(@stockitem) %></button>
-        </div>
+        <% end %>
+      </div>
+      <button class="knop-1"><%= link_to "New Bid", new_stockitem_bids_path(@stockitem) %></button>
     </div>
+  </div>
+</div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12 hidden-sm hidden-md hidden-lg">
+      <div class="text-box1">
+        Highest bid:
+      </div>
+      <div>
+        <% @bids.each do |b| %>
+          <div>
+            € <%= b.bid_price %>
+            <% if user_signed_in? %>
+              <% if b.userbuy_id == @current_user.id %>
+                <button class="btn-small">
+                  <%= link_to 'delete',  bid_path(b),  method: :delete, data: { confirm: 'Are you sure?' } %>
+                </button>
+              <% end %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+      <button class="knop-1"><%= link_to "New Bid", new_stockitem_bids_path(@stockitem) %></button>
+    </div>
+  </div>
 </div>
