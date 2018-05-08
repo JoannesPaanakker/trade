@@ -33,13 +33,6 @@
             <% highest_bids_index += 1 %>
           </div>
           <%= button_to "New Bid", stockitem_path(s), method: "get", class: "btn-small" %>
-          <% if user_signed_in? %>
-            <% if s.usersell_id == @current_user.id %>
-              <button class="btn-small">
-                  <%= link_to 'delete',  stockitem_path(s),  method: :delete, data: { confirm: 'Are you sure?' } %>
-              </button>
-            <% end %>
-          <% end %>
         </div>
       </div>
     <% end %>
@@ -47,4 +40,4 @@
 </div>
 
 <br />
-<button class="knop-1"><%= link_to "new stockitem", catalogitems_path %></button>
+<%= button_to "I am Selling!", catalogitems_path, method: "get", class: "knop-1" %>

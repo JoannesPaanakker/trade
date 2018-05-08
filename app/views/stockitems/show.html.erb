@@ -54,7 +54,7 @@
           </div>
         <% end %>
       </div>
-      <button class="knop-1"><%= link_to "New Bid", new_stockitem_bids_path(@stockitem) %></button>
+      <%= button_to "New Bid", new_stockitem_bids_path(@stockitem), method: "get", class: "knop-1" %>
     </div>
   </div>
 </div>
@@ -78,7 +78,7 @@
           </div>
         <% end %>
       </div>
-      <button class="knop-1"><%= link_to "New Bid", new_stockitem_bids_path(@stockitem) %></button>
+      <%= button_to "New Bid", new_stockitem_bids_path(@stockitem), method: "get", class: "knop-1" %>
     </div>
   </div>
 </div>

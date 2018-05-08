@@ -16,6 +16,7 @@
           <div class="catalog-description">
             <%= c.description %>
           </div>
+          <%= button_to "Details", catalogitem_path(c), method: "get", class: "btn-small" %>
           <%= button_to "Sell", new_stockitem_path(c), method: "get", class: "btn-small" %>
           <% if user_signed_in? && current_user.admin %>
             <%= button_to "Edit", edit_catalogitem_path(c), method: "get", class: "btn-small" %>
@@ -25,8 +26,9 @@
     <% end %>
   </div>
 </div>
-
-<% if  user_signed_in? && current_user.admin %>
-  <%= button_to "New", new_catalogitem_path, method: "get", class: "knop-1" %>
-<% end %>
-<%= button_to "home", root_path, method: "get", class: "knop-1" %>
+<div class="justify">
+  <% if  user_signed_in? && current_user.admin %>
+    <%= button_to "New", new_catalogitem_path, method: "get", class: "knop-1" %>
+  <% end %>
+  <%= button_to "home", root_path, method: "get", class: "knop-1" %>
+</div>

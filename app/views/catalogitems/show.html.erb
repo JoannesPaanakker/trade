@@ -1,1 +1,36 @@
-show.html.erb
+ <div class="development">
+  developer info: <br />
+  <% if current_user %>
+    current_user: <%= current_user.email  %>
+  <% else %>
+    no user logged in
+  <% end %>
+</div>
+<div class="image">
+  <%= image_tag @catalogitem.photo, class: "img-responsive"%>
+</div>
+<div class="container-fluid">
+  <div class="row stockitem-data">
+    <div class="col-xs-4">
+      <ul>
+        <li>Retail price:</li>
+        <li>Brand:</li>
+        <li>Description:</li>
+        <li>Release Date:</li>
+        <li>Product Code:</li>
+        <li>Colour:</li>
+      </ul>
+    </div>
+    <div class="col-xs-8">
+        <ul>
+          <li>€ <%= @catalogitem.retail_price %></li>
+          <li><%= @catalogitem.brand %></li>
+          <li><%= @catalogitem.description %></li>
+          <li><%= @catalogitem.release_date %></li>
+          <li><%= @catalogitem.product_code %></li>
+          <li><%= @catalogitem.colour %></li>
+        </ul>
+    </div>
+  </div>
+</div>
+<%= button_to "Sell", new_stockitem_path(@catalogitem), method: "get", class: "btn-small" %>

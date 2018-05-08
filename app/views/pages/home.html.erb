@@ -53,15 +53,14 @@
 <div class="justify">
   <%= button_to "Market", stockitems_path, method: "get", class: "knop-1" %>
   <%= button_to "Catalogue Items", catalogitems_path, method: "get", class: "knop-1" %>
+  <% if user_signed_in? && current_user.admin  %>
+    <%= button_to "Orders", orders_path, method: "get", class: "knop-1"%>
+    <%= button_to "Users", users_path, method: "get", class: "knop-1"%>
+  <% end %>
 </div>
 
 
-<% if user_signed_in? && current_user.admin  %>
-<%= button_to "Orders", orders_path, method: "get", class: "knop-1"%>
-<% end %>
-<% if user_signed_in? && current_user.admin  %>
-<%= button_to "Users", users_path, method: "get", class: "knop-1"%>
-<% end %>
+
 
 <!-- <div class="container-fluid">
   <h1 class="text-center mb-3">Top sellers</h1>
