@@ -12,9 +12,10 @@
     <%= c.text_field :brand, required: true, autofocus: false, placeholder: 'Brand name' %>
     <%= c.label "description:" %>
     <%= c.text_field :description, required: true, autofocus: false, placeholder: 'what is it exactly?' %>
-    <%= c.label "'Brand specific product code (be exact please)'"  %>
+    <%= c.label "Brand specific product code (be exact please)"  %>
     <%= c.text_field :product_code, required: true, autofocus: false, placeholder: 'Product code' %>
-    <%#= c.text_field :category, required: true, autofocus: false, placeholder: 'shoe' %>
+    <%= c.label "Photo:"  %>
+    <%= c.text_field :photo, required: true, autofocus: false, placeholder: 'filename' %>
     <div class="form-actions">
       <%= c.submit "Register", class: 'knop-1' %>
     </div>
