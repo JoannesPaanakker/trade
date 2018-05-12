@@ -185,6 +185,33 @@ catalogitems = Catalogitem.create([
     colour: "marhsmellow",
     brand: "Puma",
     photo: "Puma-Parallel-The-Weeknd-Marshmallow.jpg",
+  },
+  {
+    description: 'STAR PLAYER OX',
+    product_code: '161409C',
+    retail_price: 80,
+    release_date: DateTime.new(2018, 4, 5),
+    colour: "PARCHMENT/VALOR BLUE",
+    brand: "Converse",
+    photo: "converse-161409c.jpg",
+  },
+  {
+    description: 'Air VaporMax Flyknit MOC 2',
+    product_code: 'AQ0996-102',
+    retail_price: 220,
+    release_date: DateTime.new(2018, 5, 15),
+    colour: "SAIL/CARGO KHAKI-DARK STUCCO",
+    brand: "Nike",
+    photo: "nike-air-vapormax-flyknit-aq0996.jpg",
+  },
+  {
+    description: 'Air Max 97 Special Edition',
+    product_code: ' AQ4137-100',
+    retail_price: 190,
+    release_date: DateTime.new(2018, 5, 15),
+    colour: "WHITE/WHITE-WHITE",
+    brand: "Nike",
+    photo: "nike-air-aq4137.jpg",
   }
 ])
 
