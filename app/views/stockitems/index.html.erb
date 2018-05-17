@@ -6,7 +6,10 @@
     no user logged in
   <%# end %>
 </div> -->
-<h1>Market</h1>
+<div class="justify">
+  <h1>Market</h1>
+  <%= button_to "I am Selling!", catalogitems_path, method: "get", class: "knop-1" %>
+</div>
 <div class="container-fluid">
   <div class="row">
     <% highest_bids_index = 0 %>
@@ -39,5 +42,3 @@
   </div>
 </div>
 
-<br />
-<%= button_to "I am Selling!", catalogitems_path, method: "get", class: "knop-1" %>
